@@ -1,0 +1,191 @@
+.roboto-mono {
+  font-family: "Roboto Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+/* ===== RESET ===== */
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== HERO ===== */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  background-color: #fbf9e7;
+  overflow: hidden;
+}
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 1px solid #331a00;
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  color: #331a00;
+  text-align: center;
+  padding-top: 27vh;
+  font-family: "Roboto Mono", monospace;
+}
+#type-h1 {
+  font-size: 4rem;
+  margin-bottom: 10px;
+}
+#type-p {
+  font-size: 1.5rem;
+  margin: 0;
+  margin-top: 16px;
+}
+
+/* ===== HERO CONTENT ===== */
+/* ===== TOP-LEFT HORIZONTAL NAV ===== */
+.side-nav {
+  position: fixed;
+  top: 24px;
+  left: 32px;
+  z-index: 10;
+  font-family: "Roboto Mono", monospace;
+}
+
+.side-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 40px; /* spacing between items */
+}
+
+.side-nav li {
+  margin: 0;
+}
+
+.side-nav a {
+  position: relative;
+  text-decoration: none;
+  font-size: 20px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #331a00;
+  transition: color 0.3s ease;
+}
+
+/* hover */
+.side-nav a:hover {
+  color: #8c844a;
+}
+
+/* active state underline */
+.side-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 2px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.side-nav a:hover::after,
+.side-nav a.active::after {
+  transform: scaleX(1);
+}
+
+/* ===== WRAPPER (ANIMATION OWNER) ===== */
+.bg-wrapper {
+  position: absolute;
+  animation-name: float;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  will-change: transform;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.bg-wrapper.slow {
+  animation-duration: 30s; /* was too slow */
+}
+
+.bg-wrapper.medium {
+  animation-duration: 18s;
+}
+
+/* ===== ZONES ===== */
+[data-zone="top"] {
+  top: 10%;
+}
+[data-zone="middle"] {
+  top: 40%;
+}
+[data-zone="bottom"] {
+  top: 76%; /* 🔑 use top, not bottom */
+}
+
+/* ===== SVG BASE ===== */
+.bg-shape {
+  width: 70px;
+  height: 70px;
+  pointer-events: auto;
+  transition:
+    transform 0.35s ease,
+    fill 0.3s ease,
+    stroke 0.3s ease;
+}
+
+/* Filled icons */
+.bg-shape.fill {
+  fill: #fff4cc;
+}
+
+/* Stroke icons */
+.bg-shape.stroke {
+  fill: none;
+  stroke: #fff4cc;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ===== HOVER (ONLY SCALE / ROTATE) ===== */
+.bg-shape:hover {
+  transform: scale(1.15) rotate(8deg);
+  fill: #eadfa8;
+  stroke: #eadfa8;
+}
+
+/* ===== MOTION (WRAPPER ONLY) ===== */
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(35px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.cursor {
+  display: inline-block;
+  margin-left: 4px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%,
+  50%,
+  100% {
+    opacity: 1;
+  }
+  25%,
+  75% {
+    opacity: 0;
+  }
+}
